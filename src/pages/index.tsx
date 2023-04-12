@@ -1,5 +1,7 @@
+import { Heading } from "@renatosouzabr-ui/react";
+
 export default function Home() {
   return (
-    <h1>Hello World</h1>
+    <Heading>Hello World</Heading>
   )
 }
