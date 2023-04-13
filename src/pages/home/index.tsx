@@ -3,17 +3,22 @@ import { Heading, Text } from '@renatosouzabr-ui/react'
 
 import appPreview from '@/assets/app-preview.png'
 
+import { ClaimUsernameForm } from './components/ClaimUsernameForm'
 import { Hero, HomeContainer, Preview } from './styles'
 
 export default function Home() {
   return (
     <HomeContainer>
       <Hero>
-        <Heading as="h1">Agendamento descomplicado</Heading>
-        <Text size="xl">
+        <Heading as="h1" size="3xl">
+          Agendamento descomplicado
+        </Heading>
+        <Text size="lg">
           Conecte seu calendário e permita que as pessoas marquem agendamentos
           no seu tempo livre.
         </Text>
+
+        <ClaimUsernameForm />
       </Hero>
 
       <Preview>
