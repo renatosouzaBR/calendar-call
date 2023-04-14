@@ -1,4 +1,4 @@
-import { Box, styled } from '@renatosouzabr-ui/react'
+import { Box, Text, styled } from '@renatosouzabr-ui/react'
 
 export const ClaimUsernameFormContainer = styled(Box, {
   display: 'grid',
@@ -9,5 +9,14 @@ export const ClaimUsernameFormContainer = styled(Box, {
 
   '@media (max-width: 600px)': {
     gridTemplateColumns: '1fr',
+  },
+})
+
+export const FormErrorMessage = styled(Text, {
+  paddingLeft: '$1',
+  color: '$gray400',
+
+  defaultVariants: {
+    size: 'xs',
   },
 })
