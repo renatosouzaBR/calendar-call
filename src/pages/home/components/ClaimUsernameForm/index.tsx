@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { Button, TextInput } from '@renatosouzabr-ui/react'
 import { ArrowRight } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
@@ -17,16 +18,18 @@ const claimUsernameFormSchema = z.object({
 type ClaimUsernameFormType = z.infer<typeof claimUsernameFormSchema>
 
 export function ClaimUsernameForm() {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ClaimUsernameFormType>({
     resolver: zodResolver(claimUsernameFormSchema),
   })
 
-  function handleSubmitForm(data: ClaimUsernameFormType) {
-    console.log(data)
+  async function handleSubmitForm(data: ClaimUsernameFormType) {
+    const { username } = data
+    await router.push(`/register?username=${username}`)
   }
 
   return (
@@ -41,7 +44,7 @@ export function ClaimUsernameForm() {
         {...register('username')}
       />
 
-      <Button size="sm" type="submit">
+      <Button size="sm" type="submit" disabled={isSubmitting}>
         Reservar horário
         <ArrowRight />
       </Button>

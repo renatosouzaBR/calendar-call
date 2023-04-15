@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { ArrowRight } from 'phosphor-react'
 import { z } from 'zod'
@@ -16,6 +17,7 @@ import {
   RegisterForm,
   RegisterHeader,
 } from './styles'
+import { useEffect } from 'react'
 
 const registerFormSchema = z.object({
   username: z
@@ -29,9 +31,12 @@ const registerFormSchema = z.object({
 type RegisterFormTypes = z.infer<typeof registerFormSchema>
 
 export default function Register() {
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormTypes>({
     resolver: zodResolver(registerFormSchema),
@@ -40,6 +45,12 @@ export default function Register() {
   function handleRegister(data: RegisterFormTypes) {
     console.log(data)
   }
+
+  useEffect(() => {
+    if (router.query.username) {
+      setValue('username', String(router.query.username))
+    }
+  }, [router.query.username, setValue])
 
   return (
     <RegisterContainer>
