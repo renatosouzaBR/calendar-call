@@ -1,5 +1,6 @@
 import { Button, Text } from '@renatosouzabr-ui/react'
 import { ArrowRight } from 'phosphor-react'
+import { signIn } from 'next-auth/react'
 
 import { ConnectCalendarContent, ConnectCalendarGoogle } from './styles'
 import { RegisterContainer } from '../styles'
@@ -17,7 +18,11 @@ export default function ConnectCalendar() {
       <ConnectCalendarContent>
         <ConnectCalendarGoogle>
           <Text>Google Agenda</Text>
-          <Button variant="secondary" size="sm">
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => signIn('google')}
+          >
             Conectar
             <ArrowRight />
           </Button>
