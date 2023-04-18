@@ -5,22 +5,12 @@ import { useForm } from 'react-hook-form'
 import { ArrowRight } from 'phosphor-react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Button,
-  Heading,
-  MultiStep,
-  Text,
-  TextInput,
-} from '@renatosouzabr-ui/react'
+import { Button, Text, TextInput } from '@renatosouzabr-ui/react'
 
 import { api } from '@/lib/axios'
 
-import {
-  FormErrorMessage,
-  RegisterContainer,
-  RegisterForm,
-  RegisterHeader,
-} from './styles'
+import { FormErrorMessage, RegisterContainer, RegisterForm } from './styles'
+import { HeaderSteps } from './header-steps'
 
 const registerFormSchema = z.object({
   username: z
@@ -70,15 +60,11 @@ export default function Register() {
 
   return (
     <RegisterContainer>
-      <RegisterHeader>
-        <Heading as="strong">Bem-vindo ao Ignite Call!</Heading>
-        <Text>
-          Precisamos de algumas informações para criar seu perfil! Ah, você pode
-          editar essas informações depois.
-        </Text>
-
-        <MultiStep size={4} currentStep={1} />
-      </RegisterHeader>
+      <HeaderSteps
+        title="Bem-vindo ao Ignite Call!"
+        description="Precisamos de algumas informações para criar seu perfil! Ah, você pode editar essas informações depois."
+        currentStep={1}
+      />
 
       <RegisterForm as="form" onSubmit={handleSubmit(handleRegister)}>
         <label>

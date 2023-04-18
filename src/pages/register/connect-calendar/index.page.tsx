@@ -1,21 +1,18 @@
-import { Button, Heading, MultiStep, Text } from '@renatosouzabr-ui/react'
+import { Button, Text } from '@renatosouzabr-ui/react'
 import { ArrowRight } from 'phosphor-react'
 
 import { ConnectCalendarContent, ConnectCalendarGoogle } from './styles'
-import { RegisterContainer, RegisterHeader } from '../styles'
+import { RegisterContainer } from '../styles'
+import { HeaderSteps } from '../header-steps'
 
 export default function ConnectCalendar() {
   return (
     <RegisterContainer>
-      <RegisterHeader>
-        <Heading as="strong">Conecte sua agenda!</Heading>
-        <Text>
-          Conecte o seu calendário para verificar automaticamente as horas
-          ocupadas e os novos eventos à medida em que são agendados.
-        </Text>
-
-        <MultiStep size={4} currentStep={2} />
-      </RegisterHeader>
+      <HeaderSteps
+        title="Conecte sua agenda!"
+        description="Conecte o seu calendário para verificar automaticamente as horas ocupadas e os novos eventos à medida em que são agendados."
+        currentStep={2}
+      />
 
       <ConnectCalendarContent>
         <ConnectCalendarGoogle>
