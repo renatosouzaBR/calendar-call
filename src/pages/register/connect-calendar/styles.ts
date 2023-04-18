@@ -19,3 +19,8 @@ export const ConnectCalendarGoogle = styled('div', {
     fontWeight: 500,
   },
 })
+
+export const ErrorMessage = styled(Text, {
+  color: '#ED4337',
+  padding: '0 $1',
+})
